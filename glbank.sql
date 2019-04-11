@@ -52,8 +52,8 @@ CREATE TABLE `card` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `PIN` varchar(4) NOT NULL,
   `active` tinyint(1) NOT NULL,
-  `expireY` int(11) NOT NULL,
-  `expireM` int(11) NOT NULL,
+  `expireY` int(2) NOT NULL,
+  `expireM` int(2) NOT NULL,
   `IDAccount` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `IDAccount` (`IDAccount`)
@@ -313,4 +313,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-10 11:27:30
+-- Dump completed on 2019-04-11 10:15:05
