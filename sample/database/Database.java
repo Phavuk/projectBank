@@ -3,6 +3,7 @@ package sample.database;
 import sample.Employee;
 import sample.Globals;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 
 public class Database {
@@ -45,7 +46,7 @@ public class Database {
 
         try {
 
-            pst = conn.prepareStatement("SELECT * FROM Employee INNER JOIN loginEmp ON Employee.id = loginEmp.ide WHERE login LIKE ? and password LIKE ?" );
+            pst = conn.prepareStatement("SELECT * FROM Employee INNER JOIN loginemployee ON Employee.id = loginEmployee.IDEmployee WHERE login LIKE ? and password LIKE ?" );
             pst.setString(1,name);
             pst.setString(2,pass);
             rs = pst.executeQuery();
