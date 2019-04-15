@@ -13,9 +13,6 @@ public class Client {
         this.ID = ID;
     }
 
-    public Client(String fname, String lname, int id) {
-
-    }
 
     public String getFirstname() {
         return Firstname;

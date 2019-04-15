@@ -99,7 +99,7 @@ public class Database {
 
     public ArrayList<Client> selectClients() throws SQLException {
         Connection conn = getConnection();
-        String query = "SELECT * FROM client";
+        String query = "SELECT * FROM Client";
         ArrayList <Client> clientList = new ArrayList<>();
 
         try{
@@ -108,7 +108,7 @@ public class Database {
             pst = conn.prepareStatement(query);
             rs = pst.executeQuery();
             while (rs.next()){
-                Client client = new Client(rs.getString("fname"),rs.getString("lname"),rs.getInt("id"));
+                Client client = new Client(rs.getString("fname"),rs.getString("lname"),rs.getString("email"),rs.getInt("ID"));
                 clientList.add(client);
             }
             return clientList;
