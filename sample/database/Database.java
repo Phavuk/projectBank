@@ -1,10 +1,12 @@
 package sample.database;
 
+import sample.Client;
 import sample.Employee;
 import sample.Globals;
 
 import javax.xml.crypto.Data;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Database {
 
@@ -37,6 +39,35 @@ public class Database {
         return null;
     }
 
+    public Client showClient(String Firstname, String Lastname){
+        Connection conn = getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs;
+
+        try {
+
+            pst = conn.prepareStatement("SELECT * FROM Client");
+            pst.setString(1,Firstname);
+            pst.setString(2,Lastname);
+
+            rs = pst.executeQuery();
+            System.out.println(Firstname);
+            System.out.println(Lastname);
+            while (rs.next()) {
+                System.out.println("It works");
+                System.out.println("Finally");
+
+                Client client = new Client(rs.getString("fname"), rs.getString("lname"),rs.getString("email"),rs.getInt("ID"));
+                return client;
+            }
+            conn.close();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     public Employee compareEmployee(String name, String pass){
 
@@ -52,7 +83,7 @@ public class Database {
             rs = pst.executeQuery();
             while (rs.next()) {
                 System.out.println("It works");
-
+                System.out.println("Finally");
 
                 Employee person = new Employee(rs.getString("fname"), rs.getString("lname"),
                         rs.getInt("position"), rs.getInt("id"));
@@ -65,6 +96,27 @@ public class Database {
         }
         return null;
     }
+
+    public ArrayList<Client> selectClients() throws SQLException {
+        Connection conn = getConnection();
+        String query = "SELECT * FROM client";
+        ArrayList <Client> clientList = new ArrayList<>();
+
+        try{
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+            pst = conn.prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()){
+                Client client = new Client(rs.getString("fname"),rs.getString("lname"),rs.getInt("id"));
+                clientList.add(client);
+            }
+            return clientList;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+  }
 
 }
 

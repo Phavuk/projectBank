@@ -10,7 +10,6 @@ public class Employee {
     private int position;
     private int id;
 
-
     public Employee(String firstname, String surname, int position, int id) {
         Firstname = firstname;
         Surname = surname;
