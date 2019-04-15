@@ -1,5 +1,6 @@
 package sample.database;
 
+import javafx.scene.control.Alert;
 import sample.Client;
 import sample.Employee;
 import sample.Globals;
@@ -25,7 +26,6 @@ public class Database {
         Connection connection;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("DriverLoaded");
             connection = DriverManager.getConnection(Globals.url, Globals.username, Globals.password);
             return connection;
         }
@@ -82,8 +82,7 @@ public class Database {
             pst.setString(2,pass);
             rs = pst.executeQuery();
             while (rs.next()) {
-                System.out.println("It works");
-                System.out.println("Finally");
+
 
                 Employee person = new Employee(rs.getString("fname"), rs.getString("lname"),
                         rs.getInt("position"), rs.getInt("id"));
@@ -97,6 +96,19 @@ public class Database {
         return null;
     }
 
+    public String getPosition(Employee emp){
+        int position = emp.getPosition();
+        String boss = "boss";
+        String common = "common";
+
+        if (position == 1) {
+            return common;
+        }
+        else
+        {
+            return boss;
+        }
+    }
     public ArrayList<Client> selectClients() throws SQLException {
         Connection conn = getConnection();
         String query = "SELECT * FROM Client";

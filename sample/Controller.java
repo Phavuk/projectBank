@@ -15,11 +15,13 @@ public class Controller {
     public TextField pass;
 
     public void login(ActionEvent actionEvent) {
+
         String name = username.getText();
         String password = pass.getText();
         Database db = Database.getInstance();
         Employee person = db.compareEmployee(name,password);
-        System.out.println(person.getFirstname());
+        String position = Globals.db.getPosition(person);
+
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("afterLog.fxml"));
@@ -28,8 +30,14 @@ public class Controller {
             stage2.setTitle("New");
             stage2.setScene(new Scene(root1));
             stage2.show();
+            AfterLog acc;
+            acc = fxmlLoader.getController();
+            acc.setupAfterlog(person,position);
         }
-        catch (IOException e){e.printStackTrace();}
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     public void pass(ActionEvent actionEvent) {
