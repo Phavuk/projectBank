@@ -26,7 +26,12 @@ public class AfterLog implements Initializable {
     public Label clientSurname;
     public Label clientMail;
 
+    public Label accountIDField;
+    public Label accNumField;
+    public Label amountField;
+
     ArrayList<Client> clientList;
+    ArrayList<Account> accList;
 
     public void setupAfterlog(Employee person, String position) {
 
@@ -50,6 +55,8 @@ public class AfterLog implements Initializable {
     }
     @FXML
     ComboBox<String> combobox;
+    @FXML
+    ComboBox<String> comboboxAcc;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -60,7 +67,7 @@ public class AfterLog implements Initializable {
     public void fillDropdown(){
         try {
             System.out.println("Filled successfully");
-            ArrayList<Client> clientList = Globals.db.selectClients();
+            clientList = Globals.db.selectClients();
             ObservableList<String> oblist = FXCollections.observableArrayList();
             for (int i = 0; i < clientList.size(); i++) {
                 oblist.add(clientList.get(i).getFirstname() + " " + clientList.get(i).getLastname());
@@ -73,12 +80,15 @@ public class AfterLog implements Initializable {
 
     public void clientInfo() throws SQLException {
 
-        Client selectedUser=Globals.db.selectClientInfo(clientList.get(getIDofSelected()).getID());
+        Client selectedUser=Globals.db.selectClientInfo(getIDClient());
         System.out.println(selectedUser);
         clientName.setText(selectedUser.getFirstname());
         clientSurname.setText(selectedUser.getLastname());
         clientMail.setText(String.valueOf(selectedUser.getMail()));
-        fillDropdown();
+        fillDropdownAccounts();
+    }
+    public int getIDAccount() {
+        return accList.get(comboboxAcc.getSelectionModel().getSelectedIndex()).getIDacc();
     }
 
     public int getIDofSelected() {
@@ -86,10 +96,37 @@ public class AfterLog implements Initializable {
         return combobox.getSelectionModel().getSelectedIndex();
     }
 
+    public int getIDClient() {
+        System.out.println(clientList.get(combobox.getSelectionModel().getSelectedIndex()).getID());
+        return clientList.get(combobox.getSelectionModel().getSelectedIndex()).getID();
+    }
+
     public void logout(ActionEvent actionEvent) {
         Stage stage = (Stage) logout.getScene().getWindow();
         stage.close();
     }
+
+    public void fillDropdownAccounts(){
+        accList = Globals.db.selectAccountsToList(getIDClient());
+        ObservableList<String> oblist = FXCollections.observableArrayList();
+
+        for(int i=0; i<accList.size();i++) {
+            oblist.add(accList.get(i).getIDacc() + " " + accList.get(i).getAccNum());
+        }
+
+        comboboxAcc.setItems(oblist);
+    }
+
+    public void AccInfo() throws SQLException {
+
+        Account acc = Globals.db.selectAccInfo(getIDAccount());
+        accountIDField.setText(String.valueOf(acc.getIDacc()));
+        accNumField.setText(acc.getAccNum());
+        amountField.setText(String.valueOf(acc.getMoney()));
+
+    }
+
+
 
 
 

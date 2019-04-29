@@ -1,6 +1,7 @@
 package sample.database;
 
 import javafx.scene.control.Alert;
+import sample.Account;
 import sample.Client;
 import sample.Employee;
 import sample.Globals;
@@ -77,7 +78,7 @@ public class Database {
 
         try {
 
-            pst = conn.prepareStatement("SELECT * FROM Employee INNER JOIN loginemployee ON Employee.id = loginEmployee.IDEmployee WHERE login LIKE ? and password LIKE ?" );
+            pst = conn.prepareStatement("SELECT * FROM Employee INNER JOIN loginEmp ON Employee.ID = loginEmp.IDE WHERE login LIKE ? and password LIKE ?" );
             pst.setString(1,name);
             pst.setString(2,pass);
             rs = pst.executeQuery();
@@ -150,6 +151,42 @@ public class Database {
 
             }
             return client;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public ArrayList<Account> selectAccountsToList(int id) {Connection conn = getConnection();
+    ArrayList <Account> accounts = new ArrayList<>();
+    try {              PreparedStatement pst = null;
+            ResultSet rs = null;
+            pst = conn.prepareStatement("SELECT * FROM Account where IDC like ? ");
+            pst.setInt(1,id);             rs = pst.executeQuery();
+            while (rs.next()) {Account acc = new Account(rs.getInt("ID"),rs.getString("AccNum"),rs.getDouble("amount"),rs.getInt("IDC"));                 System.out.println(acc.getAccNum());
+        accounts.add(acc);
+            }}catch (SQLException e){e.printStackTrace();
+    }         return accounts;}
+
+    public Account selectAccInfo(int id){
+        Connection conn = getConnection();
+        Account acc = null;
+
+        try {
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+            pst = conn.prepareStatement("SELECT * FROM Account where id like ? ");
+            pst.setInt(1,id);
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                acc = new Account(rs.getInt("id"),rs.getString("AccNum"),rs.getDouble("amount"),
+                        rs.getInt("idc"));
+            }
+            return acc;
 
         }catch(SQLException e){
             e.printStackTrace();
