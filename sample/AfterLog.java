@@ -22,6 +22,12 @@ public class AfterLog implements Initializable {
     public Label afterLogSurname;
     public Label afterLogPosition;
 
+    public Label clientName;
+    public Label clientSurname;
+    public Label clientMail;
+
+    ArrayList<Client> clientList;
+
     public void setupAfterlog(Employee person, String position) {
 
         String name = person.getFirstname();
@@ -53,6 +59,7 @@ public class AfterLog implements Initializable {
     }
     public void fillDropdown(){
         try {
+            System.out.println("Filled successfully");
             ArrayList<Client> clientList = Globals.db.selectClients();
             ObservableList<String> oblist = FXCollections.observableArrayList();
             for (int i = 0; i < clientList.size(); i++) {
@@ -62,6 +69,21 @@ public class AfterLog implements Initializable {
         }catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public void clientInfo() throws SQLException {
+
+        Client selectedUser=Globals.db.selectClientInfo(clientList.get(getIDofSelected()).getID());
+        System.out.println(selectedUser);
+        clientName.setText(selectedUser.getFirstname());
+        clientSurname.setText(selectedUser.getLastname());
+        clientMail.setText(String.valueOf(selectedUser.getMail()));
+        fillDropdown();
+    }
+
+    public int getIDofSelected() {
+        System.out.println(combobox.getSelectionModel().getSelectedIndex());
+        return combobox.getSelectionModel().getSelectedIndex();
     }
 
     public void logout(ActionEvent actionEvent) {

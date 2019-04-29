@@ -111,7 +111,7 @@ public class Database {
     }
     public ArrayList<Client> selectClients() throws SQLException {
         Connection conn = getConnection();
-        String query = "SELECT * FROM Client";
+        String query = "SELECT * FROM client";
         ArrayList <Client> clientList = new ArrayList<>();
 
         try{
@@ -129,6 +129,34 @@ public class Database {
         }
         return null;
   }
+
+
+    public Client selectClientInfo(int id){
+        Connection conn = getConnection();
+        Client client = null;
+        String query = "SELECT * FROM client where ID like ? ";
+
+        try {
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+            pst = conn.prepareStatement(query);
+            pst.setString(1,String.valueOf(id));
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                client = new Client(rs.getString("fname"),rs.getString("lname"),rs.getString("email"),
+                        rs.getInt("ID"));
+
+            }
+            return client;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
 }
 
