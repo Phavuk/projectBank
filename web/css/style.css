@@ -1,0 +1,191 @@
+
+
+body,html {
+
+height:100%;
+width:100%;
+margin:0;
+padding: 0;
+background:#E9E9E9;
+font-family: 'Roboto', sans-serif;
+
+}
+
+a {
+  text-decoration:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.upBar {
+	
+width:100%;
+height:12%;
+min-height:80px;
+background:#d35400;
+align-self:flex-start;
+display:flex;
+justify-content:space-between;
+align-items: center;
+color:white;
+font-weight:bold;
+
+}
+
+.heading {
+
+margin-left:25em;
+font-size:27px;
+
+}
+
+.leftNav,.rightNav {
+
+height:100%;
+display:flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+
+}
+
+.navBtn,.forAcc,.logout {
+
+width:6em;
+height:100%;
+display:flex;
+align-items: center;
+justify-content: center;
+cursor:pointer;
+color:#FFF;
+
+}
+
+.forAcc {
+
+background-size: 60px 60px;
+height:100%;
+
+}
+
+.logout{
+
+}
+
+#main {
+
+/*background: red;*/
+width:100%;
+height:100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+
+}
+
+span{
+
+padding-bottom: 0.5%;
+padding-top: 0.5%;
+
+}
+
+.username,.password {
+
+height:30px;
+width:250px;
+margin-top:9%;
+border:1.5px solid #F77545;
+border-radius:6px;
+font-size:0.8em;
+text-indent: 4px;
+
+}
+
+#submitBtn {
+
+height:40px;
+width:255px;
+margin-top:9%;
+outline:none;
+border:none;
+border-radius:1px;
+background: #F77545;
+font-size:1.4rem;
+color:white;
+
+}
+
+#formWrap {
+
+	/*background:red;*/
+	height:88%;
+	width:30em;
+	display: flex;
+	flex-direction: column;
+
+}
+
+#logoWrap{
+
+	width:100%;
+	height:15em;
+	background:#F77545;
+	align-self: auto ;
+	margin-top:5rem;
+	-webkit-box-shadow: 0px 3px 16px 1px rgba(0,0,0,0.19);
+	-moz-box-shadow: 0px 3px 16px 1px rgba(0,0,0,0.19);
+	box-shadow: 0px 3px 16px 1px rgba(0,0,0,0.19);
+
+}
+
+.logo {
+	background:url(../img/gelnica.png) center / contain no-repeat;
+	background-size:180px 180px;
+	width:100%;
+	height:100%;
+}
+
+
+.space {
+
+	height:4em;
+	width:100%;
+	/*background: red;*/
+
+}
+
+#form {
+
+	background:white;
+	height:42%;
+	width:100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: #D1D1D1;
+  font-size:1.1em;
+  text-indent: 4px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ font-size:1.1em;
+}
+
+::placeholder {
+  color: #D1D1D1;
+  font-size:1.1em;
+}
+
+

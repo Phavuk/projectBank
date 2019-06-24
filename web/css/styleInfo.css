@@ -1,0 +1,174 @@
+
+
+body,html {
+
+height:100%;
+width:100%;
+margin:0;
+padding: 0;
+background:#E9E9E9;
+font-family: 'Roboto', sans-serif;
+
+}
+
+#main {
+
+/*background: red;*/
+width:100%;
+height:100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+
+}
+
+.mainWrapper {
+
+background:#E9E9E9;
+width:100%;
+height:88%;
+display: flex;
+align-items: flex-start;
+justify-content: space-around;
+
+}
+
+.headingBox {
+
+height:8em;
+width:100%;
+background: #bdc3c7;
+display:flex;
+justify-content: flex-start;
+flex-direction: column;
+text-indent: 2em;
+
+}
+
+.headingText {
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 25px;
+color: #7A7A7A;
+margin-top:1%;
+
+}
+
+.greyText {
+
+color:#A6A6A6;
+
+}
+
+.upWrapper{
+
+height:14em;
+width:80em;
+background:#ecf0f1;
+margin-top:6%;
+
+}
+
+.passWrapper {
+
+height:6em;
+width:100%;
+
+}
+
+.right {
+
+height:100%;
+width:40%;
+float:right;
+display:flex;
+justify-content: flex-end;
+
+}
+
+#changePass{
+
+height:40px;
+width:255px;
+margin-top:9%;
+outline:none;
+border:none;
+border-radius:1px;
+background: #F77545;
+font-size:1.4rem;
+color:white;
+
+}
+
+.modalBkg {
+	
+display: none; 
+position: fixed;
+z-index: 1; 
+padding-top: 200px;
+left: 0;
+top: 0;
+width: 100%; 
+height: 100%; 
+overflow: auto; 
+background-color: rgb(0,0,0); 
+background-color: rgba(0,0,0,0.4);
+	
+}
+
+.modal-content {
+	
+background-color: #dfe6e9;
+border:1px solid #888;
+width:37em;
+height:22em;
+margin: auto;
+font-family:Lapsus;
+padding:15px;
+border:none;
+display:flex;
+align-items:center;
+justify-content: start;
+flex-direction: column;
+
+
+}
+
+.close {
+	
+color:#F77545;
+float: right;
+font-size: 28px;
+font-weight: bold;
+align-self:flex-end;
+	
+}
+
+.oldpassword,.newpassword {
+
+height:30px;
+width:350px;
+margin-top:9%;
+border:1.5px solid #F77545;
+border-radius:6px;
+font-size:0.8em;
+text-indent: 4px;
+}
+
+
+#submitPass {
+
+height:40px;
+width:150px;
+margin-top:9%;
+outline:none;
+border:none;
+border-radius:1px;
+background: #F77545;
+font-size:1.4rem;
+color:white;
+
+}

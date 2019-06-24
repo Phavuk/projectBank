@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GL Banking</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styleMain.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/mainScript.js"></script>
+
+</head>
+<body>
+
+<div id="main">
+	<div class="upBar">
+		<div class="leftNav">
+			<a href="main.html"><div class="navBtn">Home</div></a>
+			<a href="accounts.html"><div class="navBtn">Accounts</div></a>
+		</div>
+		<div class="rightNav">
+			<a href="userinfo.html" class="forAcc">Account</a>
+			<div class="logout">Logout</div>
+		</div>
+	</div>
+
+	<div class="mainWrapper">
+		<div class="middleWrapper">
+			<div class="leftWrapper">
+				<div class="upWrapper">
+					<div class="headingBox">
+						<!--<span class='headingText'>Account number:</span>-->
+						<span class='accText'></span>
+					</div>
+					<div class="balanceWrapper">
+							<div class="left">
+								<div class="balance">
+									<span class="balanceHeading"></span>
+									<br>
+									<span class="money"></span>
+								</div>
+							</div>
+					</div>
+				</div>
+				<div class="downWrapper">
+					<div class="headingBox">
+						<span class="headingText">Payment</span>
+					</div>
+						<div class="balanceWrapper">
+							<div class="left2">
+								<input id="recipient" type="text" class="recipient" placeholder="Recipient">
+								<input id="amount" type="text" class="amountMoney" placeholder="Amount">
+
+								<select name="cards" form="" id="selectCards">
+								<option value="">Cards</option>
+								</select>
+
+							</div>
+							<div class="right">
+								<input type="button" value="Submit Payment" class="payment" id="submitPayment">
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
